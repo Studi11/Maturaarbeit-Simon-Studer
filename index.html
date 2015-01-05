@@ -1,0 +1,27 @@
+<html>
+<head><title>ArduinoControl</title></head>
+<body onload="setInterval(function(){arduinoTime()}, 490)" style="font-size:22;">
+<div style="border-width:2px;border-radius:2px;border-style:outset;">
+<h2>ArduinoControl</h2>
+<script src="jquery-1.11.1.min.js"></script>  <!-- kann mithilfe dieses Tutorials heruntergeladen werden: http://blog.arduino.cc/2014/05/06/time-to-expand-your-yun-disk-space-and-install-node-js/ -->
+<script type="text/javascript">
+function sync() {   <!-- sendet den Synchronisierungs-Befehl gefolgt von der Unixtime ohne Millisekunden -->
+ var d = new Date();
+ var n = d.getTime() / 1000;
+ $.get('/arduino/sync/'+n+'/');
+}
+function continuevar() {    <!-- sendet den Befehl zum Fortfahren im Programmcode -->
+  $.get('/arduino/continue/');
+}
+function arduinoTime() {    <!-- fragt den Arduino nach dessen lokalen Zeit ab -->
+ $('#arduinotime').load('/arduino/arduinoTime/');
+}</script>
+
+<table>
+<tr><td>Sync Time</td><td><button onclick="sync()">SYNC</button></td></tr>  <!-- Button zur Synchronisation -->
+<tr><td>Time on Arduino</td><td><span id="arduinotime"></span></td></tr>  <!-- hier wird die lokale Zeit des Arduinos angezeigt -->
+<tr><td>Start Program</td><td><button onclick="continuevar()">continue & start</button></td></tr>  <!-- Button zum Fortfahren -->
+</table>
+</div>
+</body>
+</html>
