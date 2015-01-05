@@ -6,6 +6,8 @@
 //  *                             /postRelease/                             *
 //  *                             aktualisiert.                             *
 //  *************************************************************************
+
+// Dieses Programm/Sketch wird mithilfe der Arduino IDE auf den Arduino Yun geladen
                                         
 
 // Aufrufen der zusätzlich benötigten Libraries
