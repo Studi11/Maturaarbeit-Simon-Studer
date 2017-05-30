@@ -181,14 +181,7 @@ String processCommand (String command) {
 
 // verwandelt eine Zahl in Wort/String Form in eine Zahl des Typs long um (ähnlich toInt, das es bereits gibt)
 long toLong(String sWhat) {
-  int i=0;
-  long number=0L;
-  while (i<sWhat.length()) {
-    int num=sWhat.substring(i,i+1).toInt();
-    number=number*10+num;
-    i=i+1;
-  } 
-  return number;
+  return atol(sWhat.c_str());       // The Arduino Compiler should accept C++ code. (Seen in: https://arduino.stackexchange.com/questions/816/c-vs-the-arduino-language , third comment by Adam Davis)
 }
 
 
